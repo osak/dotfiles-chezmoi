@@ -1,0 +1,12 @@
+Host github.com
+  HostName github.com
+  User git
+  IdentitiesOnly yes
+
+Host *
+  ServerAliveInterval 60
+  ServerAliveCountMax 3
+  HashKnownHosts yes
+
+Include ~/.ssh/config.private.d/*.conf
+
