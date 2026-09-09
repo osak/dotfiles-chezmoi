@@ -1,0 +1,12 @@
+{{- /* chezmoi:modify-template */ -}}
+{{- $cfg := dict -}}
+
+{{- if ne .chezmoi.stdin "" -}}
+{{-   $cfg = fromToml .chezmoi.stdin -}}
+{{- end -}}
+
+{{- /* Solを使っていてもクレジット節約のためにsubagentsはTerraで動かして欲しいので、設定でデフォルトを上書きする */ -}}
+{{- $cfg = $cfg | setValueAtPath "agents.default_subagent_model" "gpt-5.6-terra" -}}
+{{- $cfg = $cfg | setValueAtPath "agents.default_subagent_reasoning_effort" "medium" -}}
+
+{{- $cfg | toToml -}}
