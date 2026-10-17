@@ -1,0 +1,13 @@
+[".local/share/agent-skills/ai-doc-template"]
+    type = "git-repo"
+    url = "https://github.com/osak/ai-doc-template.git"
+    refreshPeriod = "24h"
+    [".local/share/agent-skills/ai-doc-template".pull]
+        args = ["--ff-only"]
+
+[".local/share/agent-skills/document-shaping"]
+    type = "git-repo"
+    url = "https://github.com/osak/document-shaping.git"
+    refreshPeriod = "24h"
+    [".local/share/agent-skills/document-shaping".pull]
+        args = ["--ff-only"]
