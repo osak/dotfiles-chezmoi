@@ -29,3 +29,8 @@ export NVM_DIR="$HOME/.nvm"
 
 alias vi=vim
 alias ls='ls --color -F'
+
+if [ -e "$HOME/.zshrc.local" ]; then
+  source "$HOME/.zshrc.local"
+fi
+
