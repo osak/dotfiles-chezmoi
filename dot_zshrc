@@ -2,9 +2,17 @@ autoload -Uz compinit
 compinit
 # End of lines added by compinstall
 
+_zconfig="${XDG_CONFIG_HOME:-$HOME/.config}/zsh"
+
+# Load environment-local prehooks
+[[ -r $_zconfig/pre.zsh ]] && source $_zconfig/pre.zsh
+
 export PATH="/opt/homebrew/bin:$PATH"
 
-source "/opt/homebrew/opt/zsh-git-prompt/zshrc.sh"
+_zsh_git_prompt_rc="${ZSH_GIT_PROMPT_RC:-/opt/homebrew/opt/zsh-git-prompt/zshrc.sh}"
+[[ -r $_zsh_git_prompt_rc ]] && source $_zsh_git_prompt_rc
+unset _zsh_git_prompt_rc
+
 export PROMPT='
 [%D{%Y-%m-%d %H:%M:%S%z}][%/]
 %n@%M$(git_super_status)> '
@@ -30,7 +38,7 @@ export NVM_DIR="$HOME/.nvm"
 alias vi=vim
 alias ls='ls --color -F'
 
-if [ -e "$HOME/.zshrc.local" ]; then
-  source "$HOME/.zshrc.local"
-fi
+# Load environment-local posthooks
+[[ -r $_zconfig/post.zsh ]] && source $_zconfig/post.zsh
 
+unset _zlocal
